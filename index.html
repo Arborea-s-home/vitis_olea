@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vitis & Olea — Map Viewer</title>
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    defer
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- MarkerCluster -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+  <script
+    defer
+    src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"
+  ></script>
+
+  <!-- Chart.js per il grafico della timebar -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-wrap">
+      <img src="./images/logo.png" alt="Vitis & Olea" class="app-logo" />
+      <h1>Vitis &amp; Olea</h1>
+    </div>
+    <div class="subtitle">Sites · Contexts · Samples</div>
+  </header>
+
+  <main class="app-main">
+    <aside id="sidebar" class="sidebar">
+      <div class="panel">
+        <h2>Filtri</h2>
+
+        <!-- TAXA -->
+        <section class="filter-group" data-filter-group="taxa">
+          <div class="group-title">Taxa</div>
+          <div class="chips">
+            <label class="chip">
+              <input type="checkbox" class="chip-input" data-value="Vitis vinifera L." checked />
+              <img src="./images/vitis.png" alt="Vitis" />
+              <span>Vitis</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" class="chip-input" data-value="Olea europaea L." checked />
+              <img src="./images/olea.png" alt="Olea" />
+              <span>Olea</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- S_TYPE -->
+        <section class="filter-group" data-filter-group="stype">
+          <div class="group-title">Tipo di resto</div>
+          <div class="chips">
+            <label class="chip">
+              <input type="checkbox" class="chip-input" data-value="carpological" checked />
+              <img src="./images/carpo.png" alt="Carpological" />
+              <span>Carpological</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" class="chip-input" data-value="wood" checked />
+              <img src="./images/wood.png" alt="Wood" />
+              <span>Wood</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- CONTEXT TYPOLOGY -->
+        <section class="filter-group" data-filter-group="context_typology">
+          <div class="group-title">Context typology</div>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" class="chip-input" data-value="settlement" checked /><span>Settlement</span></label>
+            <label class="chip"><input type="checkbox" class="chip-input" data-value="sacred" checked /><span>Sacred</span></label>
+            <label class="chip"><input type="checkbox" class="chip-input" data-value="underwater" checked /><span>Underwater</span></label>
+            <label class="chip"><input type="checkbox" class="chip-input" data-value="funerary" checked /><span>Funerary</span></label>
+            <label class="chip"><input type="checkbox" class="chip-input" data-value="other" checked /><span>Other/NULL</span></label>
+          </div>
+        </section>
+
+        <div class="filter-actions">
+          <button id="btn-select-all" class="btn">Seleziona tutto</button>
+          <button id="btn-clear" class="btn btn-secondary">Azzera</button>
+          <button id="btn-fit" class="btn btn-outline">Adatta vista</button>
+        </div>
+      </div>
+    </aside>
+
+    <section id="map"></section>
+  </main>
+
+  <!-- App scripts -->
+  <script defer src="./js/map.js"></script>
+  <script defer src="./js/dashboard.js"></script>
+  <script defer src="./js/timebar.js"></script>
+</body>
+</html>
